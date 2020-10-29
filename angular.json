@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-interceptors"
+    }
+  },
+  "defaultProject": "angular-interceptors",
+  "cli": {
+    "analytics": false
+  }
 }
