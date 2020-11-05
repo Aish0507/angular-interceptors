@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainModule } from './main/main.module';
@@ -12,6 +11,7 @@ import { CacheService } from './main/services/cache.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ErrorHandlerInterceptor } from './main/interceptors/error-handler.interceptor';
+import { PayloadTransformInterceptor } from './main/interceptors/payload-transform.interceptor';
 
 const interceptors = [
   {
@@ -27,6 +27,11 @@ const interceptors = [
   {
     provide: HTTP_INTERCEPTORS,
     useClass: ErrorHandlerInterceptor,
+    multi: true,
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: PayloadTransformInterceptor,
     multi: true,
   },
 ];
