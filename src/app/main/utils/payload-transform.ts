@@ -1,17 +1,12 @@
-import { camelCase, snakeCase, kebabCase, upperCase } from 'lodash';
+import { camelCase, snakeCase, kebabCase } from 'lodash';
 
 const conversionTypes = {
   camelCase,
   snakeCase,
   kebabCase,
-  upperCase,
 };
 
-type PayloadConversionType =
-  | 'camelCase'
-  | 'snakeCase'
-  | 'kebabCase'
-  | 'upperCase';
+type PayloadConversionType = 'camelCase' | 'snakeCase' | 'kebabCase';
 
 export const validateObject = (testObject: unknown): boolean => {
   return (
