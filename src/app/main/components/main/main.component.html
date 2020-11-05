@@ -1,7 +1,10 @@
 <div class="main-wrapper">
-  <button (click)="obtainUsersInformation()">Trigger http request</button>
+  <div class="main-bar">
+    <button (click)="obtainUsersInformation()">Trigger http request</button>
+    <button (click)="failRequest()">Mock Error HTTP Request</button>
 
-  <p>{{ status }}</p>
+    <h1>{{ status }}</h1>
+  </div>
 
   <pre>
     {{ response | json }}
