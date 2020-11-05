@@ -6,7 +6,11 @@ import { Observable } from 'rxjs';
 export class RequestsService {
   constructor(private httpClient: HttpClient) {}
 
-  getInformation(): Observable<any> {
+  getInformation(): Observable<unknown> {
     return this.httpClient.get('https://jsonplaceholder.typicode.com/users');
+  }
+
+  postRequest(): Observable<unknown> {
+    return this.httpClient.post('https://google.com.sv', {});
   }
 }

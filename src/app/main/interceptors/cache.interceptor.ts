@@ -24,6 +24,8 @@ export class CacheInterceptor implements HttpInterceptor {
         ? of(cachedResponse)
         : this.submitAndCacheRequest(request, next);
     }
+
+    return next.handle(request);
   }
 
   cacheableRequest(method: string): boolean {
@@ -35,7 +37,6 @@ export class CacheInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    console.log('caching');
     return next.handle(request).pipe(
       tap((event) => {
         const cachedResponse: CachedResponse = {

@@ -30,6 +30,11 @@ export class MainComponent implements OnInit, OnDestroy {
     });
   }
 
+  failRequest(): void {
+    this.response = null;
+    this.requestsService.postRequest().subscribe(() => {});
+  }
+
   ngOnDestroy(): void {
     this.subscription$.unsubscribe();
   }
