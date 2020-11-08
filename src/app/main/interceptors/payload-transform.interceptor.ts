@@ -8,7 +8,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { convertPayload } from '../utils/payload-transform';
+import { convertPayloadKeys } from 'payload-transformer';
 
 @Injectable()
 export class PayloadTransformInterceptor implements HttpInterceptor {
@@ -18,7 +18,7 @@ export class PayloadTransformInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<unknown>> {
     let requestBody = request.body;
     if (request.body) {
-      requestBody = convertPayload(requestBody, 'snakeCase');
+      requestBody = convertPayloadKeys(requestBody, 'snakeCase');
     }
     return this.handleRequest(request.clone({ body: requestBody }), next);
   }
@@ -31,7 +31,7 @@ export class PayloadTransformInterceptor implements HttpInterceptor {
       map((response) => {
         if (response instanceof HttpResponse) {
           return response.clone({
-            body: convertPayload(response.body, 'camelCase'),
+            body: convertPayloadKeys(response.body),
           });
         }
         return response;

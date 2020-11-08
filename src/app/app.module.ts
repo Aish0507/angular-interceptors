@@ -12,8 +12,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ErrorHandlerInterceptor } from './main/interceptors/error-handler.interceptor';
 import { PayloadTransformInterceptor } from './main/interceptors/payload-transform.interceptor';
+import { AuthorizationInterceptor } from './main/interceptors/authorization.interceptor';
 
 const interceptors = [
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthorizationInterceptor,
+    multi: true,
+  },
   {
     provide: HTTP_INTERCEPTORS,
     useClass: LoadingStatusInterceptor,

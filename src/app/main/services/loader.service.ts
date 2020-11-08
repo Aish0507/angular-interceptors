@@ -3,16 +3,15 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()
 export class LoaderService {
-  status$ = new BehaviorSubject(false);
-  constructor() {}
+  private statusSubject$ = new BehaviorSubject(false);
 
-  get status(): Observable<boolean> {
-    return this.status$.asObservable();
+  get status$(): Observable<boolean> {
+    return this.statusSubject$.asObservable();
   }
 
   toggleStatus(status: boolean): void {
-    if (this.status$.value !== status) {
-      this.status$.next(status);
+    if (this.statusSubject$.value !== status) {
+      this.statusSubject$.next(status);
     }
   }
-}
+status}
