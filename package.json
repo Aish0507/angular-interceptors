@@ -21,6 +21,7 @@
     "@angular/router": "~10.1.6",
     "lodash": "^4.17.20",
     "ngx-toastr": "^13.1.0",
+    "payload-transformer": "^1.0.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

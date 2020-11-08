@@ -19,7 +19,7 @@ export class MainComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.subscription$ = this.loaderService.status.subscribe((status) =>
+    this.subscription$ = this.loaderService.status$.subscribe((status) =>
       status ? (this.status = 'Loading') : (this.status = 'Not loading')
     );
   }
